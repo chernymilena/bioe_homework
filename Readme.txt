@@ -59,10 +59,35 @@
 7. cut -f 2 ncbi_dataset_1.tsv | sort -n | tail -n  +2 |  head -n 1 # extract 2nd column, then sort by length, then remove the first line, then take the first line, it gives the smallest size
 	[chernym@login509-02-l bioe_homework]$ cut -f 2 ncbi_dataset_1.tsv | sort -n | tail -n  +2 |  head -n 1
 	1042519
-8.  cut -f 2 ncbi_dataset_1.tsv | sort -n | tail -n 1 # extract 2nd column, then sort by length then take the last line, gives the largest size
+8. cut -f 1,2 ncbi_dataset_1.tsv | sort -k 4 | tail -n  +2 |  head -n 1 # sort by second column give the smallest
+	[chernym@login509-02-l bioe_homework]$ cut -f 1,2 ncbi_dataset_1.tsv | tail -n +2 | sort -t$'\t' -n -k2 | head -n 1
+	Chlamydia trachomatis D/UW-3/CX 1042519
+9.  cut -f 2 ncbi_dataset_1.tsv | sort -n | tail -n 1 # extract 2nd column, then sort by length then take the last line, gives the largest size
 	[chernym@login509-02-l bioe_homework]$ cut -f 2 ncbi_dataset_1.tsv | sort -n | tail -n 1
 	4033464
-9. cut -f 1 ncbi_dataset_1.tsv | tail -n +2 | grep -v "coccus" | grep -i 'c.*c' # show the all names which satysfies the task
+10. cut -f 1,2 ncbi_dataset_1.tsv | tail -n +2 | sort -t$'\t' -n -k2 | tail -n 1  # sort by second column give the largest
+	[chernym@login509-02-l bioe_homework]$ cut -f 1,2 ncbi_dataset_1.tsv | tail -n +2 | sort -t$'\t' -n -k2 | tail -n 1
+	Vibrio cholerae O1 biovar El Tor str. N16961    4033464
+11. cut -f 1 ncbi_dataset_1.tsv | tail -n +2 | grep -i 'c.*c'  # show the all names which satysfies the task containing coccus
+	[chernym@login509-02-l bioe_homework]$ cut -f 1 ncbi_dataset_1.tsv | tail -n +2 | grep -i 'c.*c'
+	Chlamydia trachomatis D/UW-3/CX
+	Chlamydia trachomatis D/UW-3/CX
+	Deinococcus radiodurans R1 = ATCC 13939 = DSM 20539
+	Deinococcus radiodurans R1 = ATCC 13939 = DSM 20539
+	Helicobacter pylori J99
+	Helicobacter pylori J99
+	Lactococcus lactis subsp. lactis Il1403
+	Lactococcus lactis subsp. lactis Il1403
+	Pasteurella multocida subsp. multocida str. Pm70
+	Pasteurella multocida subsp. multocida str. Pm70
+	Chlamydia pneumoniae CWL029
+	Chlamydia pneumoniae CWL029
+	Helicobacter pylori 26695
+	Helicobacter pylori 26695
+12. cut -f 1 ncbi_dataset_1.tsv | tail -n +2 | grep -i 'c.*c' | uniq | wc -l 
+	[chernym@login509-02-l bioe_homework]$ cut -f 1 ncbi_dataset_1.tsv | tail -n +2 | grep -i 'c.*c' | uniq | wc -l
+	7
+13. cut -f 1 ncbi_dataset_1.tsv | tail -n +2 | grep -v "coccus" | grep -i 'c.*c' # show the all names which satysfies the task not containing coccus
 	[chernym@login509-02-l bioe_homework]$ cut -f 1 ncbi_dataset_1.tsv | tail -n +2 | grep -v "coccus" | grep -i 'c.*c'
 	Chlamydia trachomatis D/UW-3/CX
 	Chlamydia trachomatis D/UW-3/CX
@@ -74,20 +99,20 @@
 	Chlamydia pneumoniae CWL029
 	Helicobacter pylori 26695
 	Helicobacter pylori 26695
-10. cut -f 1 ncbi_dataset_1.tsv | tail -n +2 | grep -v "coccus" | grep -i 'c.*c' | wc -l # count the number of lines which satysfies the task
-	[chernym@login509-02-l bioe_homework]$ cut -f 1 ncbi_dataset_1.tsv | tail -n +2 | grep -v "coccus" | grep -i 'c.*c' | wc -l
-	10
-11. cd /home/chernym/homework3_1/bioe_homework/ncbi_dataset/ #change the directory to the folder with files
+14. cut -f 1 ncbi_dataset_1.tsv | tail -n +2 | grep -v "coccus" | grep -i 'c.*c' | uniq | wc -l # count the number of lines which satysfies the task
+	[chernym@login509-02-l bioe_homework]$ cut -f 1 ncbi_dataset_1.tsv | tail -n +2 | grep -v "coccus" | grep -i 'c.*c' | uniq | wc -l
+	5
+15. cd /home/chernym/homework3_1/bioe_homework/ncbi_dataset/ #change the directory to the folder with files
 	[chernym@login509-02-l ncbi_dataset]$ cd /home/chernym/homework3_1/bioe_homework/ncbi_dataset/
 	[chernym@login509-02-l ncbi_dataset]$
-12. mkdir data1 # create a folder with name data1
-13. cp /home/chernym/homework3_1/bioe_homework/ncbi_dataset/data/*/*.fna /home/chernym/homework3_1/bioe_homework/ncbi_dataset/data1/ #copy all fna-files to one directory
+16. mkdir data1 # create a folder with name data1
+17. cp /home/chernym/homework3_1/bioe_homework/ncbi_dataset/data/*/*.fna /home/chernym/homework3_1/bioe_homework/ncbi_dataset/data1/ #copy all fna-files to one directory
 	[chernym@login509-02-l ncbi_dataset]$ cp /home/chernym/homework3_1/bioe_homework/ncbi_dataset/data/*/*.fna /home/chernym/homework3_1/bioe_homework/ncbi_dataset/data1/
 	[chernym@login509-02-l ncbi_dataset]$
-14. cd /home/chernym/homework3_1/bioe_homework/ncbi_dataset/data1/
+18. cd /home/chernym/homework3_1/bioe_homework/ncbi_dataset/data1/
 	[chernym@login509-02-l ncbi_dataset]$ cd /home/chernym/homework3_1/bioe_homework/ncbi_dataset/data1/
 	[chernym@login509-02-l data1]$
-15. find  -size +3M  #find all files larger than 3 Mb 
+19. find  -size +3M  #find all files larger than 3 Mb 
 	[chernym@login509-02-l data1]$  find  -size +3M
 	./GCA_000006745.1_ASM674v1_genomic.fna
 	./GCA_000007125.1_ASM712v1_genomic.fna
@@ -95,6 +120,6 @@
 	./GCF_000006745.1_ASM674v1_genomic.fna
 	./GCF_000007125.1_ASM712v1_genomic.fna
 	./GCF_000008565.1_ASM856v1_genomic.fna
-16. find  -size +3M | wc -l #count the number of lines
+20. find  -size +3M | wc -l #count the number of lines
 	[chernym@login509-02-l data1]$ find  -size +3M | wc -l
 	6
